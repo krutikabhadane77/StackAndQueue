@@ -1,4 +1,5 @@
 //UC1 Ability to create a Stack of 56->30->70
+//UC2 Ability to peak and pop from the Stack till it is empty 56->30->70
 package com.stackproblem;
 
 import static java.lang.System.exit;
@@ -24,10 +25,30 @@ public class Stack {
         top = temp;
     }
 
+    public boolean isEmpty() {
+         return top == null;
+     }
+    public int peek()
+    {
+        if (!isEmpty()) {
+            return top.data;
+        }
+        else {
+            System.out.println("Stack is empty");
+            return -1;
+        }
+    }
+
+    public void pop()
+    {
+        if (top == null) {
+            return;
+        }
+        top = (top).link;
+    }
     public void display()
     {
         if (top == null) {
-            System.out.printf("\nStack Underflow");
             exit(1);
         }
         else {
@@ -46,6 +67,10 @@ public class Stack {
         stack.push(70);
         stack.push(30);
         stack.push(56);
+        stack.display();
+        System.out.printf("\nTop element is \n", stack.peek());
+        stack.pop();
+        stack.pop();
         stack.display();
     }
 }
